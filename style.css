@@ -1,0 +1,246 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+       background: linear-gradient(135deg, #42a5f5, #66bb6a);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Top Bar */
+    .topbar {
+        background: linear-gradient(135deg, #42a5f5, #66bb6a);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .logo {
+      font-size: 22px;
+      color: #032012;
+      font-weight: bold;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: linear-gradient(135deg, #42a5f5, #66bb6a);
+      position: fixed;
+      top: 0;
+      left: -260px; /* Hidden by default */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .close {
+      align-self: flex-start;
+      font-size: 26px;
+      margin: 10px 0 20px 15px;
+      cursor: pointer;
+    }
+
+    .signin-btn {
+      background-color: #0c4d13;
+      color: white;
+      border: none;
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .menu-item {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .menu-item:hover {
+      color: #00a651;
+    }
+
+    .theme-toggle {
+      margin-top: auto;
+      margin-bottom: 20px;
+      background: none;
+      border: 1px solid #333;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+    }
+
+    .light-mode {
+      background-color: white;
+      color: black;
+    }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #e3f2fd, #e8f5e9);
+  color: #2c3e50;
+}
+
+/* Hero Banner */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #42a5f5, #66bb6a);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* Main Container */
+.main-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Upload Card */
+.upload-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.upload-card input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid #90caf9;
+  border-radius: 10px;
+  resize: vertical;
+  font-size: 15px;
+  background: #f9f9f9;
+}
+
+button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #42a5f5, #66bb6a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Loading Animation */
+.loading {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.spinner {
+  margin: 0 auto;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #42a5f5;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Result Cards */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+}
+
+.summary-card h3 {
+  color: #1565c0;
+}
+
+.clause-card h3 {
+  color: #2e7d32;
+}
+
+.warning-card h3 {
+  color: #ef6c00;
+}
+
+ul {
+  padding-left: 25px;
+}
+
+footer {
+  text-align: center;
+  background: #1565c0;
+  color: white;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
