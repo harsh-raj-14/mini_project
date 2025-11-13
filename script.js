@@ -1,20 +1,3 @@
-const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const sidebar = document.getElementById('sidebar');
-    const themeBtn = document.getElementById('themeBtn');
-
-    menuBtn.addEventListener('click', () => {
-      sidebar.classList.add('active');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-    });
-
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
-    });
 const backendURL = "http://localhost:8000/summarize"; // Update when deployed
 
 const fileInput = document.getElementById("fileInput");
