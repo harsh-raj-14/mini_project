@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Contract Summarizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <div class="hamburger" id="menuBtn">&#9776;</div>
+    <div class="logo">AAH</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="close" id="closeBtn">&times;</div>
+    <button class="signin-btn">Sign In</button>
+
+    <div class="menu-item">About</div>
+    <div class="menu-item">contact</div>
+    <div class="menu-item">logout</div>
+  </div>
+  <script>
+    
+  </script>
+  <div class="hero">
+    <div class="overlay">
+      <h1>📜 Legal Contract Summarizer & Loophole Detector</h1>
+      <p>Upload a contract or paste text to get an AI-powered summary and analysis</p>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="upload-card">
+      <h2>📤 Upload or Paste Contract</h2>
+      <input type="file" id="fileInput" accept=".txt,.pdf" />
+      <textarea id="contractText" placeholder="Paste your contract text here..."></textarea>
+      <button id="summarizeBtn">✨ Summarize Contract</button>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Analyzing contract, please wait...</p>
+    </div>
+
+    <div id="results" class="results hidden">
+      <div class="card summary-card">
+        <h3>📋 Summary</h3>
+        <p id="summary"></p>
+      </div>
+
+      <div class="card clause-card">
+        <h3>📑 Key Clauses</h3>
+        <ul id="clauses"></ul>
+      </div>
+
+      <div class="card warning-card">
+        <h3>⚠️ Possible Loopholes / Warnings</h3>
+        <ul id="warnings"></ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ by Team ContractAI</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
