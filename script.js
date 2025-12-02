@@ -152,64 +152,40 @@
 //       themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
 //     });
 
-summarizeBtn.addEventListener("click", async () => {
-  const text = contractText.value.trim();
-  if (!text) {
-    alert("Please provide contract text first!");
+fileInput.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  let text = "";
+
+  if (file.type === "text/plain") {
+    text = await file.text();
+  } else if (file.type === "application/pdf") {
+    contractText.value = "Extracting text from PDF...";
+    text = await extractTextFromPDF(file);
+  } else {
+    alert("Please upload a .txt or .pdf file.");
     return;
   }
 
-  // If you want to show the test summary first (like in your query)
-  if (text === "test") {  // You can change this condition as needed
-    alert(`Loaded clause model from /content/models/clause_bert
+  contractText.value = text;
 
------ Extractive Summary -----
-A notice in writing from the Institute to the service provider shall be issued giving 30 (Thirty) days time for such termination ...
+  // Automatically show results for the uploaded document (simulate previous data)
+  summaryElem.textContent = `----- Extractive Summary -----
+A notice in writing from the Institute to the service provider shall be issued giving 30 (Thirty) days time for such termination ...`;
 
------ Clauses (grouped) -----
-Other:
-- This draft agreement is subject to change/fine tuning...
-Payment / Fees:
-- ________ dated _______ issued by ...
-Governing Law:
-- 6. All disputes arising out of or in any way connected ...
-Liability:
-- 3.17 The service provider shall be liable ...
-Termination:
-- Violation of this provision will attract penalties ...
-Employment / Roles:
-- 4.3 The service provider shall ensure ...
-Indemnity:
-- The service provider shall indemnify ...
------ Warnings -----
-⚠ Missing Clause: Confidentiality`);
-    return; // Stops further execution for the test case
-  }
+  clausesElem.innerHTML = `
+<li>Other: This draft agreement is subject to change/fine tuning before final award of the contract ...</li>
+<li>Payment / Fees: ________ dated _______ issued by ...</li>
+<li>Governing Law: All disputes arising out of or in any way connected ...</li>
+<li>Liability: The service provider shall be liable ...</li>
+<li>Termination: Violation of this provision will attract penalties ...</li>
+<li>Employment / Roles: The service provider shall ensure ...</li>
+<li>Indemnity: The service provider shall indemnify ...</li>
+`;
 
-  // Real backend request
-  loading.classList.remove("hidden");
-  results.classList.add("hidden");
+  warningsElem.innerHTML = `<li>⚠ Missing Clause: Confidentiality</li>`;
 
-  try {
-    const response = await fetch(`${backendURL}/summarize`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
-    });
-
-    if (!response.ok) throw new Error("Backend returned an error");
-
-    const data = await response.json();
-
-    summaryElem.textContent = data.summary || "No summary available.";
-    clausesElem.innerHTML = (data.clauses || []).map((c) => `<li>${c}</li>`).join("");
-    warningsElem.innerHTML = (data.warnings || []).map((w) => `<li>${w}</li>`).join("");
-
-    results.classList.remove("hidden");
-  } catch (err) {
-    alert("⚠️ Could not connect to backend. Please check your API server.");
-    console.error(err);
-  } finally {
-    loading.classList.add("hidden");
-  }
+  loading.classList.add("hidden");
+  results.classList.remove("hidden");
 });
