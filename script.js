@@ -1,5 +1,5 @@
 
-const backendURL = "http://127.0.0.1:8000/summarize"; // Update when deployed
+const backendURL = "http://127.0.0.1:8000"; // Update when deployed
 
 const fileInput = document.getElementById("fileInput");
 const contractText = document.getElementById("contractText");
